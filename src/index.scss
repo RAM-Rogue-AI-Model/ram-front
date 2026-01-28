@@ -1,0 +1,22 @@
+:root{
+    --primary:#0FBE5E;
+    --neutral900:#1A1A1A;
+    --neutral800:#3D3D3D;
+    --neutral100:#FFFFFF;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    background-color: var(--neutral900);
+}
