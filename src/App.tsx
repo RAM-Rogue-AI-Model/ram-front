@@ -36,7 +36,7 @@ function App() {
         </div>}/>
         {!logged && <>
           <Route path={'/login'} element={<Login login={login} tab={'login'}/>}/>
-          <Route path={'/register/:token'} element={<Login login={login} tab={'register'}/>}/>
+          <Route path={'/register'} element={<Login login={login} tab={'register'}/>}/>
         </>}
       </Routes>
     </BrowserRouter>

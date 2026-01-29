@@ -1,8 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Quicksand:wght@500&family=Rouge+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Oxanium:wght@200..800&family=Quicksand:wght@500&family=Rouge+Script&display=swap');
+
 :root{
     --primary:#0FBE5E;
+    --secondary:#1ba057;
     --neutral900:#1A1A1A;
-    --neutral800:#3D3D3D;
+    --neutral800:#272727;
+    --neutral700:#3D3D3D;
+    --neutral600:#5a5a5a;
     --neutral100:#FFFFFF;
+
+    --error:#FF6464
 }
 
 *{
@@ -13,6 +21,7 @@
 
 html{
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body{

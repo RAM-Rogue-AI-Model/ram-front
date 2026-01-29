@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "i18next": "^25.8.0",
     "i18next-browser-languagedetector": "^8.2.0",
     "react": "^19.2.0",

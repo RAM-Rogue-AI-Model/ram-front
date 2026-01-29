@@ -1,0 +1,110 @@
+.Body{
+    font-size: 16px;
+    font-family: 'Oxanium', sans-serif;
+    text-decoration: none;
+    width: 100%;
+    -webkit-user-select: none; /* Safari, older Chrome/Opera */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none; 
+    word-wrap: break-word;
+    color: var(--neutral100);
+
+    //PROPS
+
+    &.overflow{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &.uppercase{
+        text-transform: uppercase;
+    }
+
+    &.error{
+        color:var(--error);
+    }
+
+    &.underline{
+        text-decoration: underline;
+    }
+
+    &.primary{
+        color: var(--primary);
+    }
+
+    &.hover{
+        color: var(--neutral200);
+    }
+
+    &.hoverPrimary{
+        color: var(--primary);
+    }
+
+    &.auto{
+        width: auto;
+    }
+
+    &.hoverable{
+        transition: all .2s;
+
+        &:hover{
+            color: var(--neutral200);
+        }
+
+        &.primary{
+            &:hover{
+                color:var(--secondary);
+            }
+        }
+    }
+
+    //SIZE
+
+    &.small{
+        font-size: 14px;
+    }
+    
+    &.veryLarge{
+        font-size: 22px;
+    }
+
+    &.large{
+        font-size: 18px;
+    }
+
+    //WEIGHT
+
+    &.thin{
+        font-weight: 200;
+    }
+
+    &.light{
+        font-weight: 300;
+    }
+
+    &.medium{
+        font-weight: 400;
+    }
+
+    &.regular{
+        font-weight: 500;
+    }
+
+    &.semiBold{
+        font-weight: 600;
+    }
+
+    &.bold{
+        font-weight: 700;
+    }
+
+    &.extraBold{
+        font-weight: 800;
+    }
+
+    &.black{
+        font-weight: 900;
+    }
+}
