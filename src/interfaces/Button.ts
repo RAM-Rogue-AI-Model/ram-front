@@ -1,10 +1,10 @@
 export interface ButtonType {
-    type?:"primary" | "secondary" | "nude" | "link" | null,
-    animation?:"scale"|null,
-    label?:string | null,
-    image?:string | null,
-    onClick?:(e:React.MouseEvent<HTMLDivElement>)=>void,
-    size?:"large"|"small"|null,
-    full?:boolean|null
-    disabled?:boolean | null
+  type?: 'primary' | 'secondary' | 'nude' | 'link' | null;
+  animation?: 'scale' | null;
+  label?: string | null;
+  image?: string | null;
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+  size?: 'large' | 'small' | null;
+  full?: boolean | null;
+  disabled?: boolean | null;
 }

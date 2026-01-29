@@ -1,87 +1,87 @@
-.Button{
-    padding: 15px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    border-radius: 10px;
-    width: fit-content;
-    gap: 10px;
-    cursor: pointer;
-    transition: all .3s;
-    user-select: none;
+.Button {
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border-radius: 10px;
+  width: fit-content;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  user-select: none;
 
-    img{
-        width: 30px;
-        height: 30px;
-        pointer-events: none;
+  img {
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+  }
+
+  &.full {
+    width: 100%;
+  }
+
+  &.nude {
+    height: fit-content !important;
+    width: fit-content !important;
+    padding: 0 !important;
+  }
+
+  &.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &.large {
+    height: 50px;
+
+    img {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  &.small {
+    height: 30px;
+
+    img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  &.icon {
+    padding: 0;
+    width: 40px;
+
+    &.large {
+      width: 50px;
     }
 
-    &.full{
-        width: 100%;
+    &.small {
+      width: 30px;
     }
+  }
 
-    &.nude{
-        height: fit-content!important;
-        width: fit-content!important;
-        padding: 0!important;
+  &.primary {
+    background-color: var(--primary);
+
+    &:hover {
+      background-color: var(--secondary);
     }
+  }
 
-    &.disabled{
-        opacity: .6;
-        pointer-events: none;
+  &.scale {
+    &:hover {
+      transform: scale(1.05);
     }
+  }
 
-    &.large{
-        height: 50px;
+  &.secondary {
+    border: 2px solid var(--neutral700);
 
-        img{
-            width: 35px;
-            height: 35px;
-        }
+    &:hover {
+      border-color: var(--neutral600);
     }
-
-    &.small{
-        height: 30px;
-        
-        img{
-            width: 25px;
-            height: 25px;
-        }
-    }
-    
-    &.icon{
-        padding: 0;
-        width: 40px;
-
-        &.large{
-            width: 50px;
-        }
-
-        &.small{
-            width: 30px;
-        }
-    }
-
-    &.primary{
-        background-color: var(--primary);
-
-        &:hover{
-            background-color: var(--secondary);
-        }
-    }
-
-    &.scale{
-        &:hover{
-            transform: scale(1.05);
-        }
-    }
-
-    &.secondary{
-        border: 2px solid var(--neutral700);
-
-        &:hover{
-            border-color: var(--neutral600);
-        }
-    }
+  }
 }

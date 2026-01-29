@@ -1,58 +1,58 @@
-.Heading{
-    font-family: "Audiowide", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    
-    -webkit-user-select: none; /* Safari, older Chrome/Opera */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* Internet Explorer/Edge */
-    user-select: none; 
+.Heading {
+  font-family: 'Audiowide', sans-serif;
+  font-weight: 400;
+  font-style: normal;
 
-    color: var(--neutral100);
+  -webkit-user-select: none; /* Safari, older Chrome/Opera */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
 
-    &.xl{
-        font-size: 40px;
+  color: var(--neutral100);
+
+  &.xl {
+    font-size: 40px;
+  }
+
+  &.l {
+    font-size: 32px;
+  }
+
+  &.m {
+    font-size: 26px;
+  }
+
+  &.s {
+    font-size: 22px;
+  }
+
+  &.xs {
+    font-size: 20px;
+  }
+
+  &.centered {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 1024px) {
+    &.xl {
+      font-size: 32px;
     }
 
-    &.l{
-        font-size: 32px;
+    &.l {
+      font-size: 26px;
     }
 
-    &.m{
-        font-size: 26px;
+    &.m {
+      font-size: 20px;
     }
 
-    &.s{
-        font-size: 22px;
+    &.s {
+      font-size: 18px;
     }
 
-    &.xs{
-        font-size: 20px;
+    &.xs {
+      font-size: 16px;
     }
-
-    &.centered{
-        text-align: center;
-    }
-
-    @media screen and (max-width:1024px){
-        &.xl{
-            font-size: 32px;
-        }
-
-        &.l{
-            font-size: 26px;
-        }
-
-        &.m{
-            font-size: 20px;
-        }
-
-        &.s{
-            font-size: 18px;
-        }
-
-        &.xs{
-            font-size: 16px;
-        }
-    }
+  }
 }

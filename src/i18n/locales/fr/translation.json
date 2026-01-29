@@ -1,40 +1,40 @@
 {
-    "ram":"RAM fr",
+  "ram": "RAM fr",
 
-    "form":{
-        "username":{
-            "field":"Identifiant :",
-            "label":"Identifiant",
-            "placeholder":"Exemple : Username1234",
-            "error":"L'identifiant saisis existe déjà"
-        },
-
-        "password":{
-            "field":"Mot de passe :",
-            "label":"Mot de passe",
-            "placeholder":"Saisir votre mot de passe",
-            "error":"Le mot de passe saisis fait moins de 8 caractères"
-        },
-
-        "confirm-password":{
-            "field":"Confirmer votre mot de passe :",
-            "placeholder":"Saisir le même mot de passe",
-            "error":"Les mots de passe sont différents"
-        }
+  "form": {
+    "username": {
+      "field": "Identifiant :",
+      "label": "Identifiant",
+      "placeholder": "Exemple : Username1234",
+      "error": "L'identifiant saisis existe déjà"
     },
 
-    "login":{
-        "title":"Connexion",
-        "error":"Identifiant ou mot de passe incorrecte",
-        "no":"Vous n'avez pas de compte ? S'inscrire"
+    "password": {
+      "field": "Mot de passe :",
+      "label": "Mot de passe",
+      "placeholder": "Saisir votre mot de passe",
+      "error": "Le mot de passe saisis fait moins de 8 caractères"
     },
 
-    "register":{
-        "title":"Inscription",
-        "error":"Une erreur est survenue",
-        "no":"Vous avez déjà un compte ? Se connecter"
-    },
+    "confirm-password": {
+      "field": "Confirmer votre mot de passe :",
+      "placeholder": "Saisir le même mot de passe",
+      "error": "Les mots de passe sont différents"
+    }
+  },
 
-    "confirm":"Confirmer",
-    "disconnect":"Déconnexion"
+  "login": {
+    "title": "Connexion",
+    "error": "Identifiant ou mot de passe incorrecte",
+    "no": "Vous n'avez pas de compte ? S'inscrire"
+  },
+
+  "register": {
+    "title": "Inscription",
+    "error": "Une erreur est survenue",
+    "no": "Vous avez déjà un compte ? Se connecter"
+  },
+
+  "confirm": "Confirmer",
+  "disconnect": "Déconnexion"
 }

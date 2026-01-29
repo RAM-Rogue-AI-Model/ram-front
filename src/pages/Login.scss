@@ -1,57 +1,57 @@
-.Login{
-    width: 100dvw;
-    height: 100dvh;
+.Login {
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  .LoginContainer {
+    width: 100%;
+    max-width: 500px;
+    border: 2px solid var(--primary);
     display: flex;
+    max-height: 100%;
+    border-radius: 20px;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
+    padding: 30px;
+    gap: 20px;
+    overflow-y: auto;
+    background-color: var(--neutral800);
 
-    .LoginContainer{
+    .LoginLogo {
+      width: 200px;
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        pointer-events: none;
         width: 100%;
-        max-width: 500px;
-        border: 2px solid var(--primary);
-        display: flex;
-        max-height: 100%;
-        border-radius: 20px;
-        flex-direction: column;
-        align-items: center;
-        padding: 30px;
-        gap: 20px;
-        overflow-y: auto;
-        background-color: var(--neutral800);
-
-        .LoginLogo{
-            width: 200px;
-            display: flex;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-
-            img{
-                pointer-events: none;
-                width: 100%;
-            }
-        }
-
-        .FormContainer{
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-
-            .FormContent{
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                width: 100%;
-            }
-
-            .FormButtons{
-                margin-top: 5px;
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-            }
-        }
+      }
     }
+
+    .FormContainer {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .FormContent {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+      }
+
+      .FormButtons {
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  }
 }
