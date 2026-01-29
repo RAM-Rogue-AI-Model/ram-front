@@ -17,6 +17,7 @@ export default tseslint.config(
   prettierConfig,
 
   {
+    ignores: ['node_modules', 'dist', 'build', '.vite', 'coverage'],
     plugins: {
       prettier: prettierPlugin,
     },
@@ -24,6 +25,13 @@ export default tseslint.config(
     rules: {
       // Fait de Prettier une règle ESLint
       'prettier/prettier': 'error',
+    },
+
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.eslint.json',
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
 
     settings: {

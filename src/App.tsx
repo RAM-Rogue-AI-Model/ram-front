@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import User from './pages/User';
+import Nav from './components/Nav';
 
 function App() {
   const [logged, setLogged] = useState<boolean>(false);
@@ -30,10 +31,11 @@ function App() {
           path={'/*'}
           element={
             <div className="AppContainer">
+              <Nav logged={logged} />
               <div className="AppContent">
                 <Routes>
                   <Route path={'/*'} element={<Home />}></Route>
-                  <Route path={'/user'} element={<User />}></Route>
+                  {logged && <Route path={'/user'} element={<User />}></Route>}
                 </Routes>
               </div>
             </div>

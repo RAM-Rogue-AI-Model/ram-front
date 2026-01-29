@@ -1,0 +1,67 @@
+.Nav {
+  width: 100%;
+  height: 80px;
+  padding: 0 20px;
+  display: flex;
+  background-color: var(--neutral800);
+  align-items: center;
+  justify-content: center;
+
+  .NavBar {
+    width: 100%;
+    height: 100%;
+    max-width: 1800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    .NavBarContent {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 10px 0;
+      gap: 20px;
+
+      &.pointer {
+        cursor: pointer;
+      }
+
+      .NavLogo {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          height: 100%;
+          pointer-events: none;
+        }
+      }
+    }
+
+    .BurgerContainer {
+      position: fixed;
+      height: calc(100dvh - 80px);
+      background-color: var(--neutral800);
+      width: 100%;
+      max-width: 300px;
+      top: 80px;
+      right: 0px;
+      transform: translateX(100%);
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+
+      &.opened {
+        transform: translateX(0);
+      }
+
+      .NavOption {
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import './Home.scss';
 import { useEffect } from 'react';
-import Button from '../components/Button';
+import Body from '../components/Body';
 
 const Home = () => {
   const params = useParams();
@@ -14,11 +14,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <Button
-        label={'login.title'}
-        type={'secondary'}
-        onClick={() => navigate('/login')}
-      />
+      <Body>{'HOME'}</Body>
     </div>
   );
 };

@@ -25,6 +25,7 @@
 
   "login": {
     "title": "Connexion",
+    "label": "Se connecter",
     "error": "Identifiant ou mot de passe incorrecte",
     "no": "Vous n'avez pas de compte ? S'inscrire"
   },
@@ -33,6 +34,14 @@
     "title": "Inscription",
     "error": "Une erreur est survenue",
     "no": "Vous avez déjà un compte ? Se connecter"
+  },
+
+  "home": {
+    "title": "Accueil"
+  },
+
+  "user": {
+    "title": "Mon compte"
   },
 
   "confirm": "Confirmer",
