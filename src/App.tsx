@@ -17,12 +17,12 @@ function App() {
     setLogged(true);
   };
 
-  // const logout = () => {
-  //   window.localStorage.removeItem('authToken');
-  //   window.localStorage.removeItem('userId');
-  //   window.localStorage.removeItem('username');
-  //   window.location.reload();
-  // };
+  const logout = () => {
+    window.localStorage.removeItem('authToken');
+    window.localStorage.removeItem('userId');
+    window.localStorage.removeItem('username');
+    window.location.reload();
+  };
 
   return (
     <BrowserRouter basename="/ram/">
@@ -35,7 +35,12 @@ function App() {
               <div className="AppContent">
                 <Routes>
                   <Route path={'/*'} element={<Home />}></Route>
-                  {logged && <Route path={'/user'} element={<User />}></Route>}
+                  {logged && (
+                    <Route
+                      path={'/user'}
+                      element={<User logout={logout} />}
+                    ></Route>
+                  )}
                 </Routes>
               </div>
             </div>

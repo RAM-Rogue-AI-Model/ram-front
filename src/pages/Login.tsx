@@ -31,11 +31,31 @@ const Login = (props: LoginType) => {
 
   const navigate = useNavigate();
 
-  const login = () => {
+  const login = async () => {
     if (!username || !password) {
       setError('login-error');
     } else {
-      console.log('login');
+      const user = {
+        username: username,
+        password: password,
+      };
+
+      try {
+        const response = (await post(
+          '/api/login',
+          user
+        )) as AuthenticateResponse;
+
+        if (response) {
+          props.login(response.token, response.user.id, response.user.username);
+          navigate('/');
+        } else {
+          setError('login-error');
+        }
+      } catch (err) {
+        console.error('Error :', err);
+        setError('login-error');
+      }
     }
   };
 
@@ -44,7 +64,7 @@ const Login = (props: LoginType) => {
       if (password.length < 8) setError('password-short');
       else if (password !== confirmPassword) setError('different-password');
       else {
-        const registeringUser = {
+        const user = {
           username: username,
           password: password,
           confirmPassword: confirmPassword,
@@ -53,7 +73,7 @@ const Login = (props: LoginType) => {
         try {
           const response = (await post(
             '/api/register',
-            registeringUser
+            user
           )) as AuthenticateResponse;
 
           if (response) {
@@ -64,7 +84,6 @@ const Login = (props: LoginType) => {
             );
             navigate('/');
           } else {
-            console.log(response);
             setError('register-error');
           }
         } catch (err) {
