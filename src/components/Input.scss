@@ -52,7 +52,7 @@
       border: none;
       background-color: transparent;
       font-size: 16px;
-      font-family: 'Oxanium';
+      font-family: 'Oxanium', sans-serif;
       color: white;
       font-weight: 400;
       text-decoration: none;
@@ -63,6 +63,12 @@
       &:focus {
         outline: none;
       }
+    }
+
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number']::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
     }
 
     textarea {

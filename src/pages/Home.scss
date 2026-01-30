@@ -1,2 +1,32 @@
 .Home {
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .HomeContainer {
+    width: 100%;
+    max-width: 1800px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .HomeContent {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .CreationField {
+        display: flex;
+        gap: 15px;
+        flex-direction: column;
+
+        .CreationInputs {
+          display: flex;
+          gap: 20px;
+        }
+      }
+    }
+  }
 }

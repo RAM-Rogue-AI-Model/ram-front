@@ -16,6 +16,20 @@ export interface InputType {
   onEnterKeyPress?: (() => void) | null;
   disabled?: boolean | null;
   placeholder?: string | null;
+  min?: number;
+  max?: number;
+  error?: string | null;
+  essential?: boolean | null;
+}
+
+export interface NumberInputType {
+  title?: string | null;
+  value: number;
+  onChange: (number: number) => void;
+  maxLength?: number | null;
+  name: string;
+  onEnterKeyPress?: (() => void) | null;
+  disabled?: boolean | null;
   error?: string | null;
   min?: number;
   max?: number;

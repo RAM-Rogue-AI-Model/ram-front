@@ -13,19 +13,6 @@ const Input = (props: InputType) => {
     setError('');
     if (!props.disabled) {
       const value: string = e.target.value;
-      // if (props.type === 'number') {
-      //   if (e.target.value !== '') {
-      //     value =
-      //       props.type === 'number' ? Number(e.target.value) : e.target.value;
-      //     if (props.type === 'number') {
-      //       const min = props.min != null ? props.min : null;
-      //       const max = props.max != null ? props.max : null;
-      //       if (min != null && Number(value) < min) setError('min-error');
-      //       if (max != null && Number(value) > max) setError('max-error');
-      //     }
-      //   } else setError('empty-error');
-      // }
-
       if (props.onChange) props.onChange(value);
     }
   };

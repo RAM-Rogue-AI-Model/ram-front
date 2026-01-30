@@ -37,7 +37,39 @@
   },
 
   "home": {
-    "title": "Accueil"
+    "title": "Accueil",
+
+    "creation": {
+      "title": "Commencer une nouvelle partie",
+
+      "name": {
+        "title": "Nom de l'IA",
+        "placeholder": "Exemple : RAM15938"
+      },
+
+      "stats": {
+        "title": "Répartition des points (48 restants) :",
+
+        "health": {
+          "title": "Santé (PV) :",
+          "label": "PV"
+        },
+        "attack": {
+          "title": "Attaque (PA) :",
+          "label": "PA"
+        },
+        "speed": {
+          "title": "Vitesse (VIT) :",
+          "label": "VIT"
+        }
+      },
+
+      "begin": "Commencer la partie"
+    },
+
+    "games": {
+      "title": "Mes parties"
+    }
   },
 
   "user": {

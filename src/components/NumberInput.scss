@@ -1,0 +1,40 @@
+.NumberInput {
+  width: 100%;
+  max-width: 125px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .NumberInputContainer {
+    width: 100%;
+    height: 50px;
+    position: relative;
+  }
+
+  .NumberInputOptions {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    top: 0;
+    right: 0;
+    padding: 5px 0;
+    height: 100%;
+
+    .NumberInputOption {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        pointer-events: none;
+      }
+    }
+  }
+}
