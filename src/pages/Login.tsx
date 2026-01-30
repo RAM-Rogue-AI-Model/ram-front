@@ -6,6 +6,8 @@ import { useState } from 'react';
 import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
 import Heading from '../components/Heading';
+import { post } from '../utils/Requests';
+import type { AuthenticateResponse } from '../interfaces/User';
 
 interface LoginType {
   login: (token: string, userId: string, username: string) => void;
@@ -37,12 +39,38 @@ const Login = (props: LoginType) => {
     }
   };
 
-  const register = () => {
+  const register = async () => {
     if (password && username && confirmPassword) {
       if (password.length < 8) setError('password-short');
       else if (password !== confirmPassword) setError('different-password');
       else {
-        console.log('register');
+        const registeringUser = {
+          username: username,
+          password: password,
+          confirmPassword: confirmPassword,
+        };
+
+        try {
+          const response = (await post(
+            '/api/register',
+            registeringUser
+          )) as AuthenticateResponse;
+
+          if (response) {
+            props.login(
+              response.token,
+              response.user.id,
+              response.user.username
+            );
+            navigate('/');
+          } else {
+            console.log(response);
+            setError('register-error');
+          }
+        } catch (err) {
+          console.error('Error :', err);
+          setError('register-error');
+        }
       }
     }
   };
