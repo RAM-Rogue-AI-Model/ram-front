@@ -1,8 +1,10 @@
+export interface UserMeResponse {
+  id: string;
+  username: string;
+  isAdmin: boolean;
+}
+
 export interface AuthenticateResponse {
   token: string;
-  user: {
-    id: string;
-    username: string;
-    isAdmin: boolean;
-  };
+  user: UserMeResponse;
 }
