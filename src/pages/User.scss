@@ -2,7 +2,7 @@
   padding: 30px;
   display: flex;
   flex-direction: column;
-  gap:10px;
+  gap: 10px;
 
   .UserInput {
     display: flex;
@@ -10,7 +10,7 @@
     gap: 10px;
     align-items: flex-end;
     max-width: 900px;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
 
     .AccountInput {
       flex-grow: 1;
@@ -19,17 +19,17 @@
     }
 
     .AccounButton {
-        flex-grow: 0;
-        flex-shrink: 1;
+      flex-grow: 0;
+      flex-shrink: 1;
     }
   }
 }
 
-.EditPassword{
-  display:flex;
+.EditPassword {
+  display: flex;
   flex-direction: column;
-  gap:15px;
+  gap: 15px;
   padding: 20px;
   border-radius: 15px;
-  background-color: var(--neutral800)
+  background-color: var(--neutral800);
 }

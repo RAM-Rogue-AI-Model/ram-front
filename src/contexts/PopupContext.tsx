@@ -51,7 +51,10 @@ export const PopupProvider = ({ children }: PopupContextProps) => {
     setOpen(false);
   };
 
-  const openPopup = (_content: React.ReactNode | undefined, _full: boolean) => {
+  const openPopup = (
+    _content: React.ReactNode | undefined,
+    _full: boolean = false
+  ) => {
     setContent(_content);
     if (_full) setFull(true);
   };

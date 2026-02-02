@@ -4,6 +4,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 25px;
 
   .HomeContainer {
     width: 100%;
@@ -26,6 +28,51 @@
           display: flex;
           gap: 20px;
         }
+      }
+    }
+
+    .Table {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .TableHeader,
+      .TableColumn {
+        width: 100%;
+        height: 40px;
+        background-color: var(--neutral800);
+        border-radius: 10px;
+        display: grid;
+        padding: 0 20px;
+        grid-template-columns: 40px 1fr 50px 50px 50px 125px 250px 50px;
+      }
+
+      .TableContent {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .TableColumn {
+        height: 60px;
+      }
+
+      .TableEmpty {
+        height: 60px;
+        width: 100%;
+        background-color: var(--neutral800);
+        display: flex;
+        align-items: center;
+        border-radius: 10px;
+        padding: 0 20px;
+      }
+
+      .TableCase {
+        height: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
       }
     }
   }

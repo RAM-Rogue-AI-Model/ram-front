@@ -10,7 +10,7 @@ import type { UserMeResponse } from './interfaces/User';
 import Popup from './components/Popup.tsx';
 
 function App() {
-  const [logged, setLogged] = useState<boolean>(true);
+  const [logged, setLogged] = useState<boolean>(false);
 
   useEffect(() => {
     const authToken = window.localStorage.getItem('authToken');
@@ -59,7 +59,7 @@ function App() {
               <Nav logged={logged} />
               <div className="AppContent">
                 <Routes>
-                  <Route path={'/*'} element={<Home />}></Route>
+                  <Route path={'/*'} element={<Home logged={logged} />}></Route>
                   {logged && (
                     <Route
                       path={'/user'}

@@ -45,14 +45,13 @@
       "label": "Mot de passe",
       "change": "Modifier le mot de passe"
     },
-    "logout" : "Se déconnecter",
+    "logout": "Se déconnecter",
     "delete": "Supprimer le compte"
   },
   "change-password": {
     "title": " Changer votre mot de passe",
     "error": "Une erreur est survenue",
     "button": "Changer le mot de passe"
-
   },
 
   "home": {
@@ -67,7 +66,7 @@
       },
 
       "stats": {
-        "title": "Répartition des points (48 restants) :",
+        "title": "Répartition des points ({{points}} restants) :",
 
         "health": {
           "title": "Santé (PV) :",
@@ -87,7 +86,27 @@
     },
 
     "games": {
-      "title": "Mes parties"
+      "title": "Mes parties",
+      "empty": "Vous n'avez aucune partie en cours",
+
+      "table": {
+        "n": "n.",
+        "name": "Nom de l'IA",
+        "pv": "PV",
+        "pa": "PA",
+        "spe": "VIT",
+        "date": "Créée le",
+
+        "nx": "#{{count}}"
+      },
+
+      "delete": {
+        "title": "Suppression d'une partie",
+        "description": "Êtes-vous sur de vouloir supprimer la partie {{name}}, elle ne sera plus récupérable par la suite..."
+      },
+
+      "launch": "Lancer une partie",
+      "continue": "Reprendre la partie"
     }
   },
 
