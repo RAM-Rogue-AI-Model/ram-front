@@ -1,0 +1,32 @@
+.PopupContent {
+  width: 100%;
+  background-color: var(--neutral800);
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+
+  .PopupContentHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .PopupContentChildren {
+    padding: 20px;
+  }
+
+  .PopupContentButtons {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .divider {
+    width: 100%;
+    height: 2px;
+    background-color: var(--neutral700);
+  }
+}

@@ -35,6 +35,7 @@
     "error": "Une erreur est survenue",
     "no": "Vous avez déjà un compte ? Se connecter"
   },
+
   "account": {
     "title": "Mon compte",
     "username": {
@@ -45,13 +46,19 @@
       "label": "Mot de passe",
       "change": "Modifier le mot de passe"
     },
+    "change-password": {
+      "title": "Changer votre mot de passe",
+      "field": "Nouveau mot de passe",
+      "error": "Modification du mot de passe impossible"
+    },
+
+    "change-username": {
+      "title": "Changer votre identifiant",
+      "field": "Nouvel identifiant",
+      "error": "Modification de l'identifiant impossible"
+    },
     "logout": "Se déconnecter",
     "delete": "Supprimer le compte"
-  },
-  "change-password": {
-    "title": " Changer votre mot de passe",
-    "error": "Une erreur est survenue",
-    "button": "Changer le mot de passe"
   },
 
   "home": {
@@ -115,5 +122,6 @@
   },
 
   "confirm": "Confirmer",
+  "cancel": "Annuler",
   "disconnect": "Déconnexion"
 }

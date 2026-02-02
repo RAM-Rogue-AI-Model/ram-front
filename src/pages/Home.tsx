@@ -37,14 +37,15 @@ const Home = (props: { logged: boolean }) => {
           setPlayers(data);
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
         });
     }
   };
 
   useEffect(() => {
     const path = params['*'];
-    if (path && path !== '' && path !== 'home') navigate('/');
+    if (path && path !== '' && path !== 'home' && path !== 'user')
+      navigate('/');
   }, [params, navigate]);
 
   useEffect(() => {
@@ -71,7 +72,7 @@ const Home = (props: { logged: boolean }) => {
           fetchPlayers();
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
         });
     }
   };
