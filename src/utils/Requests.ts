@@ -23,6 +23,16 @@ export async function post<T = unknown>(
   return response.data;
 }
 
+export async function patch<T = unknown>(
+  url: string,
+  object: unknown
+): Promise<T> {
+  const response = await axios.patch(serverUrl + url, object, {
+    headers: authHeader(),
+  });
+  return response.data;
+}
+
 export async function put<T = unknown>(
   url: string,
   object: unknown

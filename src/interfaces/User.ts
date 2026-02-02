@@ -8,3 +8,9 @@ export interface AuthenticateResponse {
   token: string;
   user: UserMeResponse;
 }
+
+export interface UserType {
+  id: string;
+  username: string;
+  passwor: string;
+}

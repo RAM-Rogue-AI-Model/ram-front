@@ -6,6 +6,7 @@
   background-color: var(--neutral800);
   align-items: center;
   justify-content: center;
+  z-index: 100;
 
   .NavBar {
     width: 100%;
@@ -48,6 +49,7 @@
       max-width: 300px;
       top: 80px;
       right: 0px;
+      z-index: 100;
       transform: translateX(100%);
       transition: transform 0.2s;
       display: flex;

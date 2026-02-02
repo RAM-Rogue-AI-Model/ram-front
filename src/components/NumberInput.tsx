@@ -11,17 +11,22 @@ const NumberInput = (props: NumberInputType) => {
   const { t } = useTranslation();
   const [value, setValue] = useState(String(props.value));
 
-  useEffect(() => {
-    const numberValue = Number(value);
-    if (typeof numberValue === 'number' && Number.isFinite(numberValue)) {
-      if (
-        (props.min == null || (props.min && numberValue >= props.min)) &&
-        (props.max == null || (props.max && numberValue < props.max))
-      ) {
-        props.onChange(numberValue);
+  const onChangeValue = (str: string) => {
+    if (str === '') {
+      setValue('');
+      props.onChange(0);
+    } else {
+      const numberValue = Number(str);
+      if (typeof numberValue === 'number' && Number.isFinite(numberValue)) {
+        if (
+          (props.min == null || (props.min && numberValue >= props.min)) &&
+          (props.max == null || (props.max && numberValue <= props.max))
+        ) {
+          props.onChange(numberValue);
+        }
       }
     }
-  }, [value]);
+  };
 
   useEffect(() => {
     setValue(String(props.value));
@@ -62,7 +67,7 @@ const NumberInput = (props: NumberInputType) => {
           type={'number'}
           value={value}
           error={value === '' ? 'input-error' : ''}
-          onChange={(str: string) => setValue(str)}
+          onChange={(str: string) => onChangeValue(str)}
         />
         <div className="NumberInputOptions">
           <button className="NumberInputOption" onClick={handlePlus}>

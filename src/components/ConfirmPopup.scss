@@ -1,0 +1,24 @@
+.ConfirmPopup {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: var(--neutral800);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .ConfirmPopupHeader {
+    width: 100%;
+    gap: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .ConfirmPopupButtons {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+}

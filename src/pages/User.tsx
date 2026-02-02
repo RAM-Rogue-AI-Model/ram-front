@@ -4,13 +4,100 @@ import Heading from '../components/Heading.tsx';
 import { useTranslation } from 'react-i18next';
 import Input from '../components/Input.tsx';
 import { useContext, useState } from 'react';
-import { post } from '../utils/Requests.ts';
+import { patch } from '../utils/Requests.ts';
 import PopupContext from '../contexts/PopupContext.tsx';
+import PopupContent from '../components/PopupContent.tsx';
+import type { UserType } from '../interfaces/User.ts';
 
-interface EditPasswordProps {
-  closeProps: () => void;
+interface EditUsernameType {
+  value: string;
+  closePopup: () => void;
 }
-const EditPassword = (props: EditPasswordProps) => {
+
+const EditUsername = (props: EditUsernameType) => {
+  const { t } = useTranslation();
+  const [username, setUsername] = useState<string>(props.value ?? '');
+  const [password, setPassword] = useState<string>('');
+  const [error, setError] = useState<'change-username-error' | null>();
+
+  const onConfirm = async () => {
+    if (username && username !== props.value && password) {
+      const passwordPayload = {
+        username: username,
+        password: password,
+      };
+      const userId = window.localStorage.getItem('userId');
+      if (!userId) {
+        setError('change-username-error');
+      }
+
+      patch(`/api/user/${userId}/rename`, passwordPayload)
+        .then((res) => {
+          if (res) {
+            const data = res as UserType;
+            window.localStorage.setItem('username', data.username);
+            props.closePopup();
+          } else {
+            setError('change-username-error');
+          }
+        })
+        .catch((err) => {
+          console.error('Error :', err);
+          setError('change-username-error');
+        });
+    }
+  };
+
+  return (
+    <div className="EditPopup">
+      <PopupContent
+        title={'account.change-username.title'}
+        confirm={{
+          action: onConfirm,
+          disabled: username === props.value || !username || !password,
+        }}
+        close={{
+          action: props.closePopup,
+        }}
+      >
+        <div className="EditPopupContainer">
+          <div className={'AccountInput'}>
+            <Input
+              error={
+                error === 'change-username-error'
+                  ? 'account.change-username.error'
+                  : undefined
+              }
+              title={t('account.change-username.field')}
+              placeholder={t('form.username.placeholder')}
+              value={username}
+              onEnterKeyPress={onConfirm}
+              onChange={setUsername}
+              name={'username'}
+            />
+          </div>
+          <div className={'AccountInput'}>
+            <Input
+              error={
+                error === 'change-username-error'
+                  ? 'account.change-username.error'
+                  : null
+              }
+              title={t('form.password.field')}
+              type={'password'}
+              value={password}
+              onEnterKeyPress={onConfirm}
+              onChange={setPassword}
+              name={'password'}
+            />
+          </div>
+        </div>
+      </PopupContent>
+    </div>
+  );
+};
+
+const EditPassword = (props: { closePopup: () => void }) => {
   const { t } = useTranslation();
   const [oldPassword, setOldPassword] = useState<string>('');
   const [newPassword, setNewPassword] = useState<string>('');
@@ -35,16 +122,16 @@ const EditPassword = (props: EditPasswordProps) => {
         };
         const userId = window.localStorage.getItem('userId');
         if (!userId) {
-          setError('not-connected');
+          setError('change-password-error');
         }
         try {
-          const response = (await post(
+          const response = (await patch(
             `/api/user/${userId}/password`,
             passwordPayload
           )) as Response;
 
           if (response) {
-            props.closeProps();
+            props.closePopup();
           } else {
             setError('change-password-error');
           }
@@ -57,111 +144,139 @@ const EditPassword = (props: EditPasswordProps) => {
   };
 
   return (
-    <div className="EditPassword">
-      <Heading size={'m'}>{t('account.title')}</Heading>
-      <div className={'AccountInput'}>
-        <Input
-          title={t('account.password.label')}
-          type={'password'}
-          value={oldPassword}
-          onChange={setOldPassword}
-          name={'oldPassword'}
-        />
-      </div>
-      <div className={'AccountInput'}>
-        <Input
-          error={
-            error === 'change-password-error'
-              ? 'change-password.error'
-              : error === 'password-short'
-                ? 'form.password.error'
-                : undefined
-          }
-          title={t('account.password.label')}
-          type={'password'}
-          value={newPassword}
-          onChange={setNewPassword}
-          name={'newPassword'}
-        />
-      </div>
-      <div className={'AccountInput'}>
-        <Input
-          error={
-            error === 'change-password-error'
-              ? 'change-password.error'
-              : error === 'different-password'
-                ? 'form.confirm-password.error'
-                : undefined
-          }
-          title={t('account.password.label')}
-          type={'password'}
-          value={confirmPassword}
-          onChange={setConfirmPassword}
-          name={'confirmPassword'}
-        />
-      </div>
-      <Button
-        type={'primary'}
-        size={'large'}
-        label={t('change-password.button')}
-        onClick={changePassword}
-      />
+    <div className="EditPopup">
+      <PopupContent
+        title={'account.change-password.title'}
+        confirm={{
+          action: changePassword,
+          disabled: !oldPassword || !newPassword || !confirmPassword,
+        }}
+        close={{
+          action: props.closePopup,
+        }}
+      >
+        <div className="EditPopupContainer">
+          <div className={'AccountInput'}>
+            <Input
+              error={
+                error === 'change-password-error'
+                  ? 'account.change-password.error'
+                  : undefined
+              }
+              title={t('account.password.label')}
+              type={'password'}
+              value={oldPassword}
+              onEnterKeyPress={changePassword}
+              onChange={setOldPassword}
+              name={'oldPassword'}
+            />
+          </div>
+          <div className={'AccountInput'}>
+            <Input
+              error={
+                error === 'change-password-error'
+                  ? 'account.change-password.error'
+                  : error === 'password-short'
+                    ? 'form.password.error'
+                    : undefined
+              }
+              title={t('account.change-password.field')}
+              type={'password'}
+              value={newPassword}
+              onEnterKeyPress={changePassword}
+              onChange={setNewPassword}
+              name={'newPassword'}
+            />
+          </div>
+          <div className={'AccountInput'}>
+            <Input
+              error={
+                error === 'change-password-error'
+                  ? 'account.change-password.error'
+                  : error === 'different-password'
+                    ? 'form.confirm-password.error'
+                    : undefined
+              }
+              title={t('form.confirm-password.field')}
+              type={'password'}
+              value={confirmPassword}
+              onEnterKeyPress={changePassword}
+              onChange={setConfirmPassword}
+              name={'confirmPassword'}
+            />
+          </div>
+        </div>
+      </PopupContent>
     </div>
   );
 };
+
 const User = (props: { logout: () => void }) => {
   const { t } = useTranslation();
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
   const { openPopup, closePopup } = useContext(PopupContext);
 
   const openChangePasswordPopup = () => {
-    openPopup(<EditPassword closeProps={closePopup} />, true);
+    openPopup(<EditPassword closePopup={closePopup} />, false);
+  };
+
+  const openChangeUsernamePopup = () => {
+    openPopup(
+      <EditUsername
+        value={window.localStorage.getItem('username') ?? ''}
+        closePopup={closePopup}
+      />,
+      false
+    );
   };
 
   return (
     <div className="User">
       <Heading size={'m'}>{t('account.title')}</Heading>
 
-      <div className={'UserInput'}>
-        <div className={'AccountInput'}>
-          <Input
-            title={t('account.username.label')}
-            type={'text'}
-            value={username}
-            onChange={setUsername}
-            name={'username'}
-          />
+      <div className="UserFormContainer">
+        <div className={'UserInput'}>
+          <div className={'AccountInput'}>
+            <Input
+              title={t('account.username.label')}
+              type={'text'}
+              value={window.localStorage.getItem('username') ?? ''}
+              disabled
+              onChange={() => {}}
+              name={'username'}
+            />
+          </div>
+          <div className={'AccountButton'}>
+            <Button
+              type={'secondary'}
+              size={'large'}
+              full
+              label={t('account.username.change')}
+              onClick={openChangeUsernamePopup}
+            />
+          </div>
         </div>
-        <div className={'AccountButton'}>
-          <Button
-            type={'secondary'}
-            size={'large'}
-            label={t('account.username.change')}
-            onClick={() => {}}
-          />
+        <div className={'UserInput'}>
+          <div className={'AccountInput'}>
+            <Input
+              title={t('account.password.label')}
+              type={'password'}
+              value={'********'}
+              disabled
+              onChange={() => {}}
+              name={'password'}
+            />
+          </div>
+          <div className={'AccountButton'}>
+            <Button
+              type={'secondary'}
+              size={'large'}
+              label={t('account.password.change')}
+              onClick={openChangePasswordPopup}
+            />
+          </div>
         </div>
       </div>
-      <div className={'UserInput'}>
-        <div className={'AccountInput'}>
-          <Input
-            title={t('account.password.label')}
-            type={'password'}
-            value={password}
-            onChange={setPassword}
-            name={'password'}
-          />
-        </div>
-        <div className={'AccountButton'}>
-          <Button
-            type={'secondary'}
-            size={'large'}
-            label={t('account.password.change')}
-            onClick={openChangePasswordPopup}
-          />
-        </div>
-      </div>
-      <div className={'UserInput'}>
+      <div className={'UserButtonsContainer'}>
         <Button
           size={'large'}
           label={t('account.logout')}
@@ -169,6 +284,7 @@ const User = (props: { logout: () => void }) => {
         />
         <Button
           size={'large'}
+          disabled
           label={t('account.delete')}
           onClick={props.logout}
         />

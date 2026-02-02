@@ -1,4 +1,8 @@
 .AppContainer {
   width: 100dvw;
   height: 100dvh;
+
+  .AppContent {
+    z-index: 1;
+  }
 }

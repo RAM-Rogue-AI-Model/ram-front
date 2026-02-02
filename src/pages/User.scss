@@ -2,7 +2,13 @@
   padding: 30px;
   display: flex;
   flex-direction: column;
-  gap:10px;
+  gap: 20px;
+
+  .UserFormContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 
   .UserInput {
     display: flex;
@@ -10,26 +16,32 @@
     gap: 10px;
     align-items: flex-end;
     max-width: 900px;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
 
     .AccountInput {
       flex-grow: 1;
       flex-shrink: 0;
-      min-width: 250px;
+      min-width: 300px;
     }
 
-    .AccounButton {
-        flex-grow: 0;
-        flex-shrink: 1;
+    .AccountButton {
+      width: 250px;
     }
+  }
+
+  .UserButtonsContainer {
+    display: flex;
+    gap: 20px;
   }
 }
 
-.EditPassword{
-  display:flex;
-  flex-direction: column;
-  gap:15px;
-  padding: 20px;
-  border-radius: 15px;
-  background-color: var(--neutral800)
+.EditPopup {
+  width: 100%;
+  max-width: 600px;
+
+  .EditPopupContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 }
