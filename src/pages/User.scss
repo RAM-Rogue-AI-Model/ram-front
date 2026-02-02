@@ -1,2 +1,35 @@
 .User {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+
+  .UserInput {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: flex-end;
+    max-width: 900px;
+    flex-wrap:wrap;
+
+    .AccountInput {
+      flex-grow: 1;
+      flex-shrink: 0;
+      min-width: 250px;
+    }
+
+    .AccounButton {
+        flex-grow: 0;
+        flex-shrink: 1;
+    }
+  }
+}
+
+.EditPassword{
+  display:flex;
+  flex-direction: column;
+  gap:15px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: var(--neutral800)
 }

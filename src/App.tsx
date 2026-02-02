@@ -7,9 +7,10 @@ import User from './pages/User';
 import Nav from './components/Nav';
 import { get } from './utils/Requests';
 import type { UserMeResponse } from './interfaces/User';
+import Popup from './components/Popup.tsx';
 
 function App() {
-  const [logged, setLogged] = useState<boolean>(false);
+  const [logged, setLogged] = useState<boolean>(true);
 
   useEffect(() => {
     const authToken = window.localStorage.getItem('authToken');
@@ -67,6 +68,7 @@ function App() {
                   )}
                 </Routes>
               </div>
+              <Popup />
             </div>
           }
         />
