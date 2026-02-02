@@ -200,7 +200,9 @@ const Home = (props: { logged: boolean }) => {
                       </Body>
                     </div>
                     <div className="TableCase">
-                      <Body>{player.name}</Body>
+                      <Body overflow maxWidth={'100%'}>
+                        {player.name}
+                      </Body>
                     </div>
                     <div className="TableCase">
                       <Body>{player.pv}</Body>

@@ -8,9 +8,11 @@ import Nav from './components/Nav';
 import { get } from './utils/Requests';
 import type { UserMeResponse } from './interfaces/User';
 import Popup from './components/Popup.tsx';
+import Loader from './components/Loader.tsx';
 
 function App() {
   const [logged, setLogged] = useState<boolean>(false);
+  const [fetching, setFetching] = useState<boolean>(true);
 
   useEffect(() => {
     const authToken = window.localStorage.getItem('authToken');
@@ -25,13 +27,16 @@ function App() {
           if (username !== result.username)
             window.localStorage.setItem('username', result.username);
           setLogged(true);
+          setFetching(false);
         })
         .catch(() => {
           window.localStorage.removeItem('authToken');
           window.localStorage.removeItem('userId');
           window.localStorage.removeItem('username');
+
+          setFetching(false);
         });
-    }
+    } else setFetching(false);
   }, []);
 
   const login = (token: string, userId: string, username: string) => {
@@ -49,41 +54,51 @@ function App() {
     window.location.reload();
   };
 
+  if (fetching) return <Loader />;
+
   return (
     <BrowserRouter basename="/ram/">
       <Routes>
         <Route
           path={'/*'}
           element={
-            <div className="AppContainer">
-              <Nav logged={logged} />
-              <div className="AppContent">
-                <Routes>
-                  <Route path={'/*'} element={<Home logged={logged} />}></Route>
-                  {logged && (
+            logged ? (
+              <div className="AppContainer">
+                <Nav logged={logged} />
+                <div className="AppContent">
+                  <Routes>
                     <Route
-                      path={'/user'}
-                      element={<User logout={logout} />}
+                      path={'/*'}
+                      element={<Home logged={logged} />}
                     ></Route>
-                  )}
-                </Routes>
+                    {logged && (
+                      <Route
+                        path={'/user'}
+                        element={<User logout={logout} />}
+                      ></Route>
+                    )}
+                  </Routes>
+                </div>
+                <Popup />
               </div>
-              <Popup />
-            </div>
+            ) : (
+              <Routes>
+                <Route
+                  path={'/*'}
+                  element={<Login login={login} tab={'login'} />}
+                />
+                <Route
+                  path={'/login'}
+                  element={<Login login={login} tab={'login'} />}
+                />
+                <Route
+                  path={'/register'}
+                  element={<Login login={login} tab={'register'} />}
+                />
+              </Routes>
+            )
           }
         />
-        {!logged && (
-          <>
-            <Route
-              path={'/login'}
-              element={<Login login={login} tab={'login'} />}
-            />
-            <Route
-              path={'/register'}
-              element={<Login login={login} tab={'register'} />}
-            />
-          </>
-        )}
       </Routes>
     </BrowserRouter>
   );

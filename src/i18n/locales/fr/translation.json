@@ -121,6 +121,7 @@
     "title": "Mon compte"
   },
 
+  "loading": "Chargement en cours...",
   "confirm": "Confirmer",
   "cancel": "Annuler",
   "disconnect": "Déconnexion"

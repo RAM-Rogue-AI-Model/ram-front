@@ -231,63 +231,64 @@ const User = (props: { logout: () => void }) => {
 
   return (
     <div className="User">
-      <Heading size={'m'}>{t('account.title')}</Heading>
-
-      <div className="UserFormContainer">
-        <div className={'UserInput'}>
-          <div className={'AccountInput'}>
-            <Input
-              title={t('account.username.label')}
-              type={'text'}
-              value={window.localStorage.getItem('username') ?? ''}
-              disabled
-              onChange={() => {}}
-              name={'username'}
-            />
+      <div className="UserContainer">
+        <Heading size={'m'}>{t('account.title')}</Heading>
+        <div className="UserFormContainer">
+          <div className={'UserInput'}>
+            <div className={'AccountInput'}>
+              <Input
+                title={t('account.username.label')}
+                type={'text'}
+                value={window.localStorage.getItem('username') ?? ''}
+                disabled
+                onChange={() => {}}
+                name={'username'}
+              />
+            </div>
+            <div className={'AccountButton'}>
+              <Button
+                type={'secondary'}
+                size={'large'}
+                full
+                label={t('account.username.change')}
+                onClick={openChangeUsernamePopup}
+              />
+            </div>
           </div>
-          <div className={'AccountButton'}>
-            <Button
-              type={'secondary'}
-              size={'large'}
-              full
-              label={t('account.username.change')}
-              onClick={openChangeUsernamePopup}
-            />
+          <div className={'UserInput'}>
+            <div className={'AccountInput'}>
+              <Input
+                title={t('account.password.label')}
+                type={'password'}
+                value={'********'}
+                disabled
+                onChange={() => {}}
+                name={'password'}
+              />
+            </div>
+            <div className={'AccountButton'}>
+              <Button
+                type={'secondary'}
+                size={'large'}
+                label={t('account.password.change')}
+                onClick={openChangePasswordPopup}
+              />
+            </div>
           </div>
         </div>
-        <div className={'UserInput'}>
-          <div className={'AccountInput'}>
-            <Input
-              title={t('account.password.label')}
-              type={'password'}
-              value={'********'}
-              disabled
-              onChange={() => {}}
-              name={'password'}
-            />
-          </div>
-          <div className={'AccountButton'}>
-            <Button
-              type={'secondary'}
-              size={'large'}
-              label={t('account.password.change')}
-              onClick={openChangePasswordPopup}
-            />
-          </div>
+        <div className={'UserButtonsContainer'}>
+          <Button
+            size={'large'}
+            label={t('account.logout')}
+            onClick={props.logout}
+          />
+          <Button
+            size={'large'}
+            disabled
+            label={t('account.delete')}
+            onClick={props.logout}
+          />
         </div>
-      </div>
-      <div className={'UserButtonsContainer'}>
-        <Button
-          size={'large'}
-          label={t('account.logout')}
-          onClick={props.logout}
-        />
-        <Button
-          size={'large'}
-          disabled
-          label={t('account.delete')}
-          onClick={props.logout}
-        />
       </div>
     </div>
   );

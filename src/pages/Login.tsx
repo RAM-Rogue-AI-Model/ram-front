@@ -2,9 +2,9 @@ import './Login.scss';
 import Logo from './../assets/logo.svg';
 import { useTranslation } from 'react-i18next';
 import Input from '../components/Input';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../components/Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Heading from '../components/Heading';
 import { post } from '../utils/Requests';
 import type { AuthenticateResponse } from '../interfaces/User';
@@ -30,6 +30,19 @@ const Login = (props: LoginType) => {
   >();
 
   const navigate = useNavigate();
+  const params = useParams();
+
+  useEffect(() => {
+    const path = params['*'];
+    if (
+      path &&
+      path !== '' &&
+      path !== '' &&
+      path !== 'login' &&
+      path !== 'register'
+    )
+      navigate('/');
+  }, [params, navigate]);
 
   const login = async () => {
     if (!username || !password) {
