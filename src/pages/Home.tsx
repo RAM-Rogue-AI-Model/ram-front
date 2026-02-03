@@ -12,6 +12,7 @@ import TrashIcon from './../assets/trash.svg';
 import type { PlayerInput, PlayerType } from '../interfaces/Player';
 import PopupContext from '../contexts/PopupContext';
 import ConfirmPopup from '../components/ConfirmPopup';
+import type { GameType } from '../interfaces/Game';
 
 const Home = (props: { logged: boolean }) => {
   const { t } = useTranslation();
@@ -78,7 +79,21 @@ const Home = (props: { logged: boolean }) => {
   };
 
   const startGame = (player: PlayerType) => {
-    console.log(player);
+    if(player.current_game_id) navigate(`/game/${player.current_game_id}/player/${player.id}`)
+    else{
+      const gameProps = {
+        pv:player.pv,
+        playerId:player.id
+      }
+      post('/api/game', gameProps).then(res => {
+        if(res){
+          const game = res as GameType
+          navigate(`/game/${game.id}/player/${player.id}`)
+        }
+      }).catch(err => {
+        console.error(err)
+      })
+    }
   };
 
   const handleDeletePlayer = (player: PlayerType) => {
@@ -219,7 +234,7 @@ const Home = (props: { logged: boolean }) => {
                     <div className="TableCase">
                       <Button
                         type={'primary'}
-                        label={'home.games.launch'}
+                        label={player.current_game_id ? 'home.games.continue' : 'home.games.launch'}
                         onClick={() => startGame(player)}
                       />
                     </div>

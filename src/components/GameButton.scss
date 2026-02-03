@@ -1,0 +1,16 @@
+.GameButton{
+    background-color: var(--neutral700);
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border: none;
+    cursor: pointer;
+    transition: all .2s;
+    border-radius: 10px;
+
+    &:hover{
+        background-color: var(--neutral600);
+    }
+}

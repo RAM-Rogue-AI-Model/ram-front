@@ -9,6 +9,7 @@ import { get } from './utils/Requests';
 import type { UserMeResponse } from './interfaces/User';
 import Popup from './components/Popup.tsx';
 import Loader from './components/Loader.tsx';
+import Game from './pages/Game.tsx';
 
 function App() {
   const [logged, setLogged] = useState<boolean>(false);
@@ -71,12 +72,14 @@ function App() {
                       path={'/*'}
                       element={<Home logged={logged} />}
                     ></Route>
-                    {logged && (
-                      <Route
-                        path={'/user'}
-                        element={<User logout={logout} />}
-                      ></Route>
-                    )}
+                    <Route
+                      path={'/user'}
+                      element={<User logout={logout} />}
+                    ></Route>
+                    <Route
+                      path={'/game/:id/player/:playerId'}
+                      element={<Game />}
+                    ></Route>
                   </Routes>
                 </div>
                 <Popup />

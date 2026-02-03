@@ -41,6 +41,15 @@
     }
   }
 
+  &.veryLarge {
+    height: 75px;
+
+    img {
+      width: 65px;
+      height: 65px;
+    }
+  }
+
   &.small {
     height: 30px;
 

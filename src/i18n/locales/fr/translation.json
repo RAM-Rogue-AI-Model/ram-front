@@ -117,6 +117,21 @@
     }
   },
 
+  "game":{
+    "stat":{
+      "pv":"{{current}}/{{total}}",
+      "inventory":"Inventaire :" 
+    },
+
+    "leave":{
+      "title":"Quitter la partie ?",
+      "save":"Sauvegarder et quitter",
+      "no-save":"Abandonner la partie"
+    },
+
+    "no-items":"Votre inventaire est vide"
+  },
+
   "user": {
     "title": "Mon compte"
   },
