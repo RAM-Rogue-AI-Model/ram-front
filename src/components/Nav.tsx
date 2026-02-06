@@ -33,7 +33,7 @@ const Nav = (props: { logged: boolean }) => {
   };
 
   const exportLogs = async () => {
-    get('/api/logs')
+    get('/api/logger')
       .then((res) => {
         const logs = res as LogsType[];
 
