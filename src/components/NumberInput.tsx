@@ -19,8 +19,8 @@ const NumberInput = (props: NumberInputType) => {
       const numberValue = Number(str);
       if (typeof numberValue === 'number' && Number.isFinite(numberValue)) {
         if (
-          (props.min == null || (props.min && numberValue >= props.min)) &&
-          (props.max == null || (props.max && numberValue <= props.max))
+          (props.min == null || (props.min !== null && numberValue >= props.min)) &&
+          (props.max == null || (props.max !== null && numberValue <= props.max))
         ) {
           props.onChange(numberValue);
         }
@@ -33,13 +33,13 @@ const NumberInput = (props: NumberInputType) => {
   }, [props.value]);
 
   const handlePlus = () => {
-    if (!props.max || props.value + 1 <= props.max) {
+    if (props.max == null || props.value + 1 <= props.max) {
       props.onChange(props.value + 1);
     }
   };
 
   const handleMinus = () => {
-    if (!props.min || props.value - 1 >= props.min) {
+    if (props.min == null || props.value - 1 >= props.min) {
       props.onChange(props.value - 1);
     }
   };
@@ -69,7 +69,7 @@ const NumberInput = (props: NumberInputType) => {
           error={value === '' ? 'input-error' : ''}
           onChange={(str: string) => onChangeValue(str)}
         />
-        <div className="NumberInputOptions">
+        <div className={"NumberInputOptions" + (props.disabled ? " disabled" : "")}>
           <button className="NumberInputOption" onClick={handlePlus}>
             <img src={ArrowTop} alt="Arrow top" />
           </button>

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import Body from './Body'
 import './GameButton.scss'
 
@@ -8,6 +9,7 @@ interface GameButtonType {
 }
 
 const GameButton = (props:GameButtonType) => {
+    const {t} = useTranslation()
 
     const onButtonClicked = () => {
         if(!props.disabled) props.onClick()
@@ -16,8 +18,10 @@ const GameButton = (props:GameButtonType) => {
     if(!props.label || !props.onClick) return 
 
     return (
-        <button className={"GameButton"} onClick={onButtonClicked} disabled={props.disabled ?? undefined}>
-            <Body>{props.label}</Body>
+        <button className={"GameButton" + (props.disabled ? " disabled" : "")} onClick={onButtonClicked} disabled={props.disabled ?? undefined}>
+            <div className="GameButtonLabel">
+                <Body>{t(props.label)}</Body>
+            </div>
         </button>
     )
 }

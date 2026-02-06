@@ -117,10 +117,34 @@
     }
   },
 
+  "shop":{
+    "title":"Boutique",
+    "description":"Choisir un objet à acheter :",
+    "items":{
+      "item":"{{name}} - {{description}} - {{price}} DATA",
+      "none":"Partir sans rien acheter"
+    },
+
+    "inventory":{
+      "title":"Inventaire",
+      "item":"- {{name}} : {{description}}"
+    }
+  },
+
   "game":{
     "stat":{
       "pv":"{{current}}/{{total}}",
       "inventory":"Inventaire :" 
+    },
+
+    "inventory":{
+      "count":"{{count}} objet(s)",
+      "see":"Consulter",
+      "empty":"Vous n'avez aucun objet"
+    },
+
+    "choices":{
+      "title":"Choix du prochain donjon :"
     },
 
     "leave":{
@@ -129,7 +153,71 @@
       "no-save":"Abandonner la partie"
     },
 
+    "recap":{
+      "title":"Récapitulatif :"
+    },
+
     "no-items":"Votre inventaire est vide"
+  },
+
+  "battle":{
+    "title":"Combat",
+
+    "win":{
+      "title":"Vous avez gagné le combat !",
+      "action":"Terminer le combat"
+    },
+
+    "defeate":{
+      "title":"Vous avez perdu...",
+      "action":"Terminer la partie",
+      "level":"Niveaux terminés : {{level}}",
+      "gain":"Récompenses :"
+    },
+
+    "attack":{
+      "title":"Qui attaquer ?"
+    },
+
+    "turn":{
+      "title":"Tour : {{count}}"
+    },
+
+    "enemy":{
+      "title":"Ennemis :"
+    },
+
+    "actions":{
+      "title":"Actions :",
+      "attack":"Attaquer",
+      "defend":"Défendre",
+      "item":"Utiliser un objet"
+    },
+
+    "effects":{
+      "title":"Effets actifs :",
+      "effect":{
+        "attack":"Attaque {{modificator}}{{count}} (encore {{turn}} tour(s))",
+        "pv":"PV {{modificator}}{{count}} (encore {{turn}} tour(s))",
+        "speed":"Vitesse {{modificator}}{{count}} (encore {{turn}} tour(s))"
+      }
+    },
+
+    "history":{
+      "title":"Historique des tours :",
+      "table":{
+        "header":{
+          "n":"n.",
+          "actions":"Actions"
+        },
+        "actions":{
+          "attack":"{{name1}} attaque {{name2}}",
+          "defend":"{{name1}} se défend",
+          "item":"{{name1}} utilise un objet"
+        },
+        "empty":"Sélectionner une action pour débuter le combat"
+      }
+    }
   },
 
   "user": {

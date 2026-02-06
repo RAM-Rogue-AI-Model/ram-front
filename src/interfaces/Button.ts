@@ -4,7 +4,7 @@ export interface ButtonType {
   label?: string | null;
   image?: string | null;
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
-  size?: 'large' | 'veryLarge' | 'small' | null;
+  size?: 'large' | 'veryLarge' | "auto" | 'small' | null;
   full?: boolean | null;
   disabled?: boolean | null;
 }

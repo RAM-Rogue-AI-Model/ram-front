@@ -21,6 +21,10 @@
     width: 100%;
   }
 
+  &.auto {
+    width: fit-content;
+  }
+
   &.nude {
     height: fit-content !important;
     width: fit-content !important;

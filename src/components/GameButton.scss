@@ -10,7 +10,16 @@
     transition: all .2s;
     border-radius: 10px;
 
+    &.disabled{
+        opacity: 0.4;
+        cursor: default;
+    }
+
     &:hover{
         background-color: var(--neutral600);
+
+        &.disabled{
+            background-color: var(--neutral700);
+        }
     }
 }

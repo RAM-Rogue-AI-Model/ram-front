@@ -14,7 +14,6 @@
 
   .NumberInputOptions {
     position: absolute;
-
     display: flex;
     flex-direction: column;
     width: 60px;
@@ -22,6 +21,11 @@
     right: 0;
     padding: 5px 0;
     height: 100%;
+
+    &.disabled{
+      opacity: .4;
+      pointer-events: none;
+    }
 
     .NumberInputOption {
       background-color: transparent;
