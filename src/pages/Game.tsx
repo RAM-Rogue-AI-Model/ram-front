@@ -199,6 +199,7 @@ const Game = () => {
     const [pv, setPV] = useState<number>(0);
     const [atk, setATK] = useState<number>(0);
     const [spe, setSPE] = useState<number>(0);
+    const [itemsUsed, setItemsUsed] = useState<string[]>([])
 
     const params = useParams()
     const navigate = useNavigate()
@@ -374,6 +375,7 @@ const Game = () => {
             if(res){
                 const data = res as GameType
                 setGame(data)
+                if(itemsUsed && itemsUsed.length > 0) setItemsUsed([])
                 setNextDungeon(null)
                 setStep('CHOICE')
             }
@@ -385,6 +387,11 @@ const Game = () => {
     const battleAction = (battleId:string, action:Action) => {
         post(`/api/battle/${battleId}/action`, {...action}).then(res => {
             if(res){
+                if(action.type === "item" && action.item_id){
+                    const itemsTmp:string[] = [...itemsUsed]
+                    itemsTmp.push(action.item_id)
+                    setItemsUsed(itemsTmp)
+                }
                 const data = res as BattleType
                 setBattle(data)
             }
@@ -399,8 +406,17 @@ const Game = () => {
         }
     }
 
+    const getItems = (items:ItemType[]) => {
+        const itemsTmp:ItemType[] = [...items]
+        for(const itemId of itemsUsed){
+            const usedItem = itemsTmp.find(i => i.id === itemId)
+            if(usedItem) itemsTmp.splice(itemsTmp.indexOf(usedItem), 1)
+        }
+        return itemsTmp 
+    }
+
     const handleItemsClicked = (playerId: string, battleId: string, items:ItemType[]) => {
-        openPopup(<ItemsPopup playerId={playerId} onItemClicked={(action:Action)=>{closePopup();battleAction(battleId, action)}} closePopup={closePopup} items={items} />, false)
+        openPopup(<ItemsPopup playerId={playerId} onItemClicked={(action:Action)=>{closePopup();battleAction(battleId, action)}} closePopup={closePopup} items={getItems(items)} />, false)
     }
 
     const handleInventoryClick = (inventory:ItemType[]) => {
@@ -421,7 +437,7 @@ const Game = () => {
     }
 
     const renderBattle = () => {
-        if(!game?.id || !player?.id || !battle) return <Loader/>
+        if(!game?.id || !game.steps || !player?.id || !battle) return <Loader/>
 
         return (
             <div className="GameMap">
@@ -430,6 +446,7 @@ const Game = () => {
                     battle.winner === "player" ? 
                     <div className="BattleContainer">
                         <Body>{t("battle.win.title")}</Body>
+                        <Body>{t("battle.win.gain", {count:20 * (1 + Math.floor(game.steps.length / 10))})}</Body>
                         <GameButton label='battle.win.action' onClick={()=>completeDungeon(game.id, player.id)} />
                     </div>
                     : <div className="BattleContainer">

@@ -163,9 +163,14 @@
   "battle":{
     "title":"Combat",
 
+    "items":{
+      "title":"Utiliser un objet"
+    },
+
     "win":{
       "title":"Vous avez gagné le combat !",
-      "action":"Terminer le combat"
+      "action":"Terminer le combat",
+      "gain":"Vous avez gagné {{count}} DATA"
     },
 
     "defeate":{
