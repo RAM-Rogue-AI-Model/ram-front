@@ -1,25 +1,25 @@
-import type { ItemType } from "./Item";
-import type { PlayerType } from "./Player";
+import type { ItemType } from './Item';
+import type { PlayerType } from './Player';
 
-export type DungeonType = "DUNGEON" | "SHOP" | "DATACENTER"
+export type DungeonType = 'DUNGEON' | 'SHOP' | 'DATACENTER';
 
 export interface GameStep {
-  completed:boolean;
-  date_add:Date;
-  game_id:string;
-  id:string;
-  type:DungeonType
+  completed: boolean;
+  date_add: Date;
+  game_id: string;
+  id: string;
+  type: DungeonType;
 }
 
 export interface GameType {
-  id:string,
-  pv:number,
-  playerId:string,
+  id: string;
+  pv: number;
+  playerId: string;
   consumables?: ItemType[];
   money?: number;
   ended?: boolean;
-  player?:PlayerType;
-  steps?:GameStep[] | null;
+  player?: PlayerType;
+  steps?: GameStep[] | null;
 }
 
 export interface EnemyType {
@@ -39,7 +39,7 @@ export interface EffectType {
   duration: number;
 }
 
-export type ActionType = 'attack' | 'item' | 'defend'
+export type ActionType = 'attack' | 'item' | 'defend';
 
 export interface Action {
   type: ActionType;
@@ -51,7 +51,7 @@ export type ActionsTour = Record<number, ActionsType>;
 export type ActionsType = Record<string, Action>;
 
 export interface BattleType {
-  id:string;
+  id: string;
   enemy: EnemyType[];
   actions: ActionsTour;
   effect: EffectType[];
@@ -59,9 +59,9 @@ export interface BattleType {
   pv: number;
   level_dungeon: number;
   game_id: string;
-  winner?:string | null;
+  winner?: string | null;
 }
 
 export interface BattleExist extends BattleType {
-  exist?:boolean|null
+  exist?: boolean | null;
 }

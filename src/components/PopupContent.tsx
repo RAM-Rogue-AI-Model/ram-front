@@ -3,7 +3,7 @@ import Heading from './Heading';
 import './PopupContent.scss';
 import { useTranslation } from 'react-i18next';
 import Button from './Button';
-import CloseIcon from './../assets/close.svg'
+import CloseIcon from './../assets/close.svg';
 
 interface PopupContentType {
   title: string;
@@ -16,7 +16,7 @@ interface PopupContentType {
   close?: {
     label?: string | null;
     action: (param: unknown) => void;
-    cross?:boolean|null
+    cross?: boolean | null;
   } | null;
 }
 
@@ -27,13 +27,15 @@ const PopupContent = (props: PopupContentType) => {
     <div className="PopupContent">
       <div className="PopupContentHeader">
         <Heading size={'s'}>{t(props.title)}</Heading>
-        {(props.close && props.close.cross) && <div className="CloseIcon">
-          <Button
-            type={"nude"}
-            image={CloseIcon}
-            onClick={props.close.action}
-          />
-        </div>}
+        {props.close && props.close.cross && (
+          <div className="CloseIcon">
+            <Button
+              type={'nude'}
+              image={CloseIcon}
+              onClick={props.close.action}
+            />
+          </div>
+        )}
       </div>
       <div className="divider"></div>
       <div className="PopupContentChildren">{props.children}</div>

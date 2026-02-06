@@ -79,20 +79,23 @@ const Home = (props: { logged: boolean }) => {
   };
 
   const startGame = (player: PlayerType) => {
-    if(player.current_game_id) navigate(`/game/${player.current_game_id}/player/${player.id}`)
-    else{
+    if (player.current_game_id)
+      navigate(`/game/${player.current_game_id}/player/${player.id}`);
+    else {
       const gameProps = {
-        pv:player.pv,
-        playerId:player.id
-      }
-      post('/api/game', gameProps).then(res => {
-        if(res){
-          const game = res as GameType
-          navigate(`/game/${game.id}/player/${player.id}`)
-        }
-      }).catch(err => {
-        console.error(err)
-      })
+        pv: player.pv,
+        playerId: player.id,
+      };
+      post('/api/game', gameProps)
+        .then((res) => {
+          if (res) {
+            const game = res as GameType;
+            navigate(`/game/${game.id}/player/${player.id}`);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
   };
 
@@ -234,7 +237,11 @@ const Home = (props: { logged: boolean }) => {
                     <div className="TableCase">
                       <Button
                         type={'primary'}
-                        label={player.current_game_id ? 'home.games.continue' : 'home.games.launch'}
+                        label={
+                          player.current_game_id
+                            ? 'home.games.continue'
+                            : 'home.games.launch'
+                        }
                         onClick={() => startGame(player)}
                       />
                     </div>

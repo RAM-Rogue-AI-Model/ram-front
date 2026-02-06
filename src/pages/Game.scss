@@ -1,265 +1,265 @@
-.Game{
-    background-color: var(--neutral900);
-    width: 100dvw;
-    height: 100dvh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+.Game {
+  background-color: var(--neutral900);
+  width: 100dvw;
+  height: 100dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
 
-    .GameContainer{
-        width: 100%;
-        height: 100%;
-        max-width: 1800px;
+  .GameContainer {
+    width: 100%;
+    height: 100%;
+    max-width: 1800px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .GameHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 100px;
+      padding: 0 20px;
+
+      .HeaderInfos {
+        flex-grow: 1;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         gap: 10px;
 
-        .GameHeader{
+        .HeaderInfoPart {
+          display: flex;
+          gap: 20px;
+          align-items: center;
+
+          .StatsContent {
+            height: 40px;
+            display: flex;
+            gap: 10px;
+            align-content: center;
+
+            .StatText {
+              height: 100%;
+              display: flex;
+              align-items: center;
+            }
+
+            .StatImg {
+              width: 25px;
+              aspect-ratio: 1/1;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              img {
+                width: 100%;
+                pointer-events: none;
+              }
+            }
+
+            .StatDetails {
+              display: flex;
+              gap: 10px;
+
+              .InventoryContent {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .GameContent {
+      overflow: auto;
+      border-radius: 20px;
+      width: 100%;
+      flex-grow: 1;
+      background-color: var(--neutral800);
+
+      .GameMap {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+        gap: 30px;
+
+        .GameMapContainer {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .RecapContainer {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .GameChoices {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .BattleContainer {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+
+          .BattleContent {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+
+          .BattleWrap {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+
+            .EnemyCase {
+              display: flex;
+              width: 200px;
+              flex-grow: 1;
+              flex-shrink: 1;
+              background-color: var(--neutral700);
+              flex-direction: column;
+              padding: 15px;
+              border-radius: 5px;
+              gap: 10px;
+
+              .StatContent {
+                display: flex;
+                gap: 10px;
+              }
+            }
+
+            .EffectCard {
+              padding: 20px;
+              background-color: var(--neutral700);
+              border-radius: 5px;
+            }
+          }
+
+          .BattleInputs {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 15px;
+          }
+
+          .HistoryContainer {
             width: 100%;
-            height: 100px;
-            padding: 0 20px;
-    
-            .HeaderInfos{
-                flex-grow: 1;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                gap: 10px;
-    
-                .HeaderInfoPart{
-                    display: flex;
-                    gap: 20px;
-                    align-items: center;
-    
-                    .StatsContent{
-                        height: 40px;
-                        display: flex;
-                        gap: 10px;
-                        align-content: center;
-    
-                        .StatText{
-                            height: 100%;
-                            display: flex;
-                            align-items: center;
-                        }
-    
-                        .StatImg{
-                            width: 25px;
-                            aspect-ratio: 1/1;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-    
-                            img{
-                                width: 100%;
-                                pointer-events: none;
-                            }
-                        }
-    
-                        .StatDetails{
-                            display: flex;
-                            gap: 10px;
-                            
-                            .InventoryContent{
-                                height: 100%;
-                                display: flex;
-                                align-items: center;
-                                gap: 15px;
-                            }
-                        }
-                    }
-                }
+            background-color: var(--neutral700);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            border-radius: 5px;
+
+            .HistoryContent {
+              display: flex;
+              gap: 20px;
+              flex-direction: column;
             }
-        }
 
-        .GameContent{
-            overflow: auto;
-            border-radius: 20px;
-            width: 100%;
-            flex-grow: 1;
-            background-color: var(--neutral800);
+            .HistoryDivider {
+              width: 100%;
+              height: 2px;
+              background-color: var(--neutral100);
+            }
 
-            .GameMap{
-                display: flex;
-                flex-direction: column;
+            .HistoryRow,
+            .HistoryHeader {
+              display: flex;
+              padding: 0 10px;
+              gap: 20px;
+              width: 100%;
+
+              .HistoryCase {
                 width: 100%;
-                padding: 20px;
-                gap: 30px;
 
-                .GameMapContainer{
-                    display: flex;
-                    flex-direction: column;
-                    gap: 15px;
+                &.fix {
+                  width: 100px;
                 }
-
-                .RecapContainer{
-                    display: flex;
-                    flex-direction: column;
-                    gap: 10px;
-                }
-
-                .GameChoices{
-                    display: flex;
-                    flex-direction: column;
-                    gap: 10px;
-                }
-
-                .BattleContainer{
-                    display: flex;
-                    flex-direction: column;
-                    gap: 15px;
-
-                    .BattleContent{
-                        display: flex;
-                        flex-direction: column;
-                        gap: 10px;
-                    }
-
-                    .BattleWrap{
-                        display: flex;
-                        gap: 20px;
-                        flex-wrap: wrap;
-
-                        .EnemyCase{
-                            display: flex;
-                            width: 200px;
-                            flex-grow: 1;
-                            flex-shrink: 1;
-                            background-color: var(--neutral700);
-                            flex-direction: column;
-                            padding: 15px;
-                            border-radius: 5px;
-                            gap: 10px;
-
-                            .StatContent{
-                                display: flex;
-                                gap: 10px;
-                            }
-                        }
-
-                        .EffectCard{
-                            padding: 20px;
-                            background-color: var(--neutral700);
-                            border-radius: 5px;
-                        }
-                    }
-
-                    .BattleInputs{
-                        display: flex;
-                        align-items: center;
-                        gap: 15px;
-                    }
-
-                    .HistoryContainer{
-                        width: 100%;
-                        background-color: var(--neutral700);
-                        padding: 20px;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 20px;
-                        border-radius: 5px;
-
-                        .HistoryContent{
-                            display: flex;
-                            gap: 20px;
-                            flex-direction: column;
-                        }
-
-                        .HistoryDivider{
-                            width: 100%;
-                            height: 2px;
-                            background-color: var(--neutral100);
-                        }
-
-                        .HistoryRow, .HistoryHeader{
-                            display: flex;
-                            padding: 0 10px;
-                            gap: 20px;
-                            width: 100%;
-
-                            .HistoryCase{
-                                width: 100%;
-
-                                &.fix{
-                                    width: 100px;
-                                }
-                            }
-                        }
-                    }
-                }
+              }
             }
+          }
         }
+      }
     }
-
+  }
 }
 
-.LeaveGamePopup{
-    width: 500px;
+.LeaveGamePopup {
+  width: 500px;
 
-    .LeaveGameContent{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
-.ActionPopup{
-    width: 100%;
-    max-width: 500px;
-
-    .ActionPopupContent{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
-.RecapContent{
-    width: 100%;
-    background-color: var(--neutral900);
+  .LeaveGameContent {
     display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.ActionPopup {
+  width: 100%;
+  max-width: 500px;
+
+  .ActionPopupContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.RecapContent {
+  width: 100%;
+  background-color: var(--neutral900);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  border-radius: 5px;
+  gap: 10px;
+
+  .RecapStep {
+    background-color: var(--neutral800);
+    padding: 20px;
+    min-width: fit-content;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
     border-radius: 5px;
     gap: 10px;
 
-    .RecapStep{
-        background-color: var(--neutral800);
-        padding: 20px;
-        min-width: fit-content;
-        max-width: 300px;
-        display: flex;
-        align-items: center;
-        border-radius: 5px;
-        gap: 10px;
-
-        &.completed{
-            background-color: var(--primary);
-        }
-
-        .divider{
-            height: 100%;
-            width: 4px;
-            background-color: var(--neutral100);
-        }
+    &.completed {
+      background-color: var(--primary);
     }
+
+    .divider {
+      height: 100%;
+      width: 4px;
+      background-color: var(--neutral100);
+    }
+  }
 }
 
-.ViewInventoryPopup{
-    width: 500px;
-    overflow-y: auto;
-    max-height: 700px;
+.ViewInventoryPopup {
+  width: 500px;
+  overflow-y: auto;
+  max-height: 700px;
 
-    .ViewInventoryContent{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-    }
+  .ViewInventoryContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
 }

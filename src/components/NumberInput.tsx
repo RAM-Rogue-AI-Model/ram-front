@@ -19,8 +19,10 @@ const NumberInput = (props: NumberInputType) => {
       const numberValue = Number(str);
       if (typeof numberValue === 'number' && Number.isFinite(numberValue)) {
         if (
-          (props.min == null || (props.min !== null && numberValue >= props.min)) &&
-          (props.max == null || (props.max !== null && numberValue <= props.max))
+          (props.min == null ||
+            (props.min !== null && numberValue >= props.min)) &&
+          (props.max == null ||
+            (props.max !== null && numberValue <= props.max))
         ) {
           props.onChange(numberValue);
         }
@@ -69,7 +71,9 @@ const NumberInput = (props: NumberInputType) => {
           error={value === '' ? 'input-error' : ''}
           onChange={(str: string) => onChangeValue(str)}
         />
-        <div className={"NumberInputOptions" + (props.disabled ? " disabled" : "")}>
+        <div
+          className={'NumberInputOptions' + (props.disabled ? ' disabled' : '')}
+        >
           <button className="NumberInputOption" onClick={handlePlus}>
             <img src={ArrowTop} alt="Arrow top" />
           </button>
