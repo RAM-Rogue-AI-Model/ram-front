@@ -232,7 +232,8 @@
   },
 
   "user": {
-    "title": "Mon compte"
+    "title": "Mon compte",
+    "export-log":"Exporter les logs"
   },
 
   "loading": "Chargement en cours...",

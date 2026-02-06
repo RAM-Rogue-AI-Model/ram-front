@@ -7,6 +7,8 @@ import { useTranslation } from 'react-i18next';
 import Button from './Button';
 import { useEffect, useRef, useState } from 'react';
 import Body from './Body';
+import { get } from '../utils/Requests';
+import type { LogsType } from '../interfaces/Log';
 
 const Nav = (props: { logged: boolean }) => {
   const { t } = useTranslation();
@@ -28,6 +30,40 @@ const Nav = (props: { logged: boolean }) => {
     setOpened(false);
     openedRef.current = false;
     navigate('/' + tab);
+  };
+
+  const exportLogs = async () => {
+    get('/api/logs')
+      .then((res) => {
+        const logs = res as LogsType[];
+
+        const textContent = logs
+          .map((log: LogsType) => {
+            const date = log.timestamp
+              ? new Date(log.timestamp).toLocaleString()
+              : new Date().toLocaleString();
+            return `[${date}] [${log.level}] [${log.microservice}] [${log.action}] - ${log.message}`;
+          })
+          .join('\n');
+
+        const blob = new Blob([textContent], {
+          type: 'text/plain;charset=utf-8',
+        });
+
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `export-logs-${new Date().getTime()}.txt`;
+
+        document.body.appendChild(link);
+        link.click();
+
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      })
+      .catch((err) => {
+        console.error("Erreur lors de l'export des logs :", err);
+      });
   };
 
   return (
@@ -74,6 +110,7 @@ const Nav = (props: { logged: boolean }) => {
               <Body hoverable>{t(page.label)}</Body>
             </div>
           ))}
+          <Button label={'user.export-log'} onClick={exportLogs} />
         </div>
       </div>
     </nav>
